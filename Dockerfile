@@ -2,6 +2,7 @@ FROM ubuntu:latest
 MAINTAINER fnndsc "dev@babymri.org"
 
 RUN apt-get update \
+  && apt-get install -y xinetd \
   && apt-get install -y dcmtk \
   && apt-get install -y python3-pip python3-dev \
   && cd /usr/local/bin \
@@ -9,6 +10,8 @@ RUN apt-get update \
   && pip3 install --upgrade pip \
   && pip install pypx
 
-EXPOSE 10401
-ENTRYPOINT ["./docker-entrypoint.sh"]
-CMD ["/etc/init.d/xinetd", "start"]
+EXPOSE 10402
+COPY ./docker-entrypoint.sh /
+ENTRYPOINT ["/docker-entrypoint.sh"]
+#CMD ["service", "xinetd", "start"]
+CMD ["/usr/sbin/xinetd", "-dontfork"]
