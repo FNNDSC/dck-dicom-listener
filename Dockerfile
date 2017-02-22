@@ -8,10 +8,11 @@ RUN apt-get update \
   && cd /usr/local/bin \
   && ln -s /usr/bin/python3 python \
   && pip3 install --upgrade pip \
-  && pip install pypx
+  && pip install pypx===0.6
 
 EXPOSE 10402
 COPY ./docker-entrypoint.sh /
+
 ENTRYPOINT ["/docker-entrypoint.sh"]
 #CMD ["service", "xinetd", "start"]
 CMD ["/usr/sbin/xinetd", "-dontfork"]
