@@ -8,7 +8,7 @@ RUN apt-get update \
   && cd /usr/local/bin \
   && ln -s /usr/bin/python3 python \
   && pip3 install --upgrade pip \
-  && pip install pypx===0.6
+  && pip install pypx==0.7
 
 EXPOSE 10402
 COPY ./docker-entrypoint.sh /
