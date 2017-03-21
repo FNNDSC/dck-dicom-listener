@@ -1,4 +1,4 @@
-FROM docker pull fnndsc/ubuntu-python3
+FROM fnndsc/ubuntu-python3
 MAINTAINER fnndsc "dev@babymri.org"
 
 RUN apt-get update \
